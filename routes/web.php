@@ -21,4 +21,12 @@ Route::match(['GET', 'POST'], 'logout', 'Auth\LoginController@logout')->name('lo
 
 Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::prefix('users')->group(function () {
+        Route::get('/', 'UserController@index');
+        Route::get('add', 'UserController@showAddUserForm');
+        Route::post('/', 'UserController@insert');
+        Route::get('edit/{id}', 'UserController@showEditUserForm');
+        Route::post('update/{id}', 'UserController@update');
+        Route::match(['GET', 'POST'],'changeStatus/{id}', 'UserController@changeStatus');
+    });
 });
