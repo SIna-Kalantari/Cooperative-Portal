@@ -27,6 +27,17 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
+    public function username(){
+        return 'phone';
+    }
+    public function validateLogin($request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ], [], ['phone' => 'نام کاربری']);
+    }
+
     /**
      * Create a new controller instance.
      *

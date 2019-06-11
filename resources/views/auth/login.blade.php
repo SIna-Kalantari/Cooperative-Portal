@@ -1,73 +1,110 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+        <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+        <title>الماس شمال - ورود</title>
+
+        <link href="{{asset('css/bootstrap-rtl.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('css/core.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('css/components.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('css/icons.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('css/responsive.css')}}" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="{{asset('js/modernizr.min.js')}}"></script>
+        
+    </head>
+    <body>
+
+        <div class="account-pages"></div>
+        <div class="clearfix"></div>
+        <div class="wrapper-page">
+        	<div class=" card-box">
+                <div class="panel-heading"> 
+                    <h3 class="text-center"> ورود به <strong class="text-custom">الماس شمال</strong> </h3>
+                </div> 
+                <div class="panel-body">
+                    <form method="post" class="form-horizontal m-t-20" action="{{ route('login') }}">
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input name="phone" autofocus class="form-control" type="text" required="" placeholder="نام کاربریت">
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input name="password" class="form-control" type="password" required="" placeholder="و اینجا هم رمز عبورت">
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <div class="checkbox checkbox-primary">
+                                    <input id="checkbox-signup" type="checkbox" name="remember">
+                                    <label for="checkbox-signup">
+                                        مرا به خاطرت نگه دار
                                     </label>
                                 </div>
+                                
+                            </div>
+                        </div>
+                        @if ($errors->first())
+                            <div sty class="alert alert-danger" role="alert">
+                                <strong>{{ $errors->first() }}</strong>
+                            </div>
+                        @endif
+                        <div class="form-group text-center m-t-40">
+                            <div class="col-xs-12">
+                                <button class="btn btn-pink btn-block text-uppercase waves-effect waves-light" type="submit">بزن بریم تو</button>
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+                        <!-- <div class="form-group m-t-30 m-b-0">
+                            <div class="col-sm-12">
+                                <a href="{{url('')}}" class="text-dark"><i class="fa fa-lock m-r-5"></i>برگردیم به سایت</a>
                             </div>
-                        </div>
-                    </form>
-                </div>
+                        </div> -->
+                    </form> 
+                
+                </div>   
             </div>
         </div>
-    </div>
-</div>
-@endsection
+        
+        
+
+        
+    	<script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+        <script src="{{asset('js/jquery.min.js')}}"></script>
+        <script src="{{asset('js/bootstrap-rtl.min.js')}}"></script>
+        <script src="{{asset('js/detect.js')}}"></script>
+        <script src="{{asset('js/fastclick.js')}}"></script>
+        <script src="{{asset('js/jquery.slimscroll.js')}}"></script>
+        <script src="{{asset('js/jquery.blockUI.js')}}"></script>
+        <script src="{{asset('js/waves.js')}}"></script>
+        <script src="{{asset('js/wow.min.js')}}"></script>
+        <script src="{{asset('js/jquery.nicescroll.js')}}"></script>
+        <script src="{{asset('js/jquery.scrollTo.min.js')}}"></script>
+
+        <script src="{{asset('js/jquery.core.js')}}"></script>
+        <script src="{{asset('js/jquery.app.js')}}"></script>
+	
+	</body>
+</html>
