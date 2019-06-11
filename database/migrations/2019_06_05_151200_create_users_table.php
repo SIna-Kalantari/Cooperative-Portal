@@ -18,9 +18,18 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('family');
             $table->char('phone', 10)->unique();
-            $table->char('roles');
+            $table->unsignedBigInteger('roleId');
+            $table->unsignedBigInteger('expertId');
             $table->string('password');
+            $table->timestamp('lastLogin')->default(NULL);
+            $table->tinyInteger('isActive')->default(1);
+            $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('roleId')
+            ->references('id')->on('roles')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 
