@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('roleId');
             $table->unsignedBigInteger('expertId');
             $table->string('password');
-            $table->timestamp('lastLogin')->default(NULL);
+            $table->timestamp('lastLogin')->nullable();
             $table->tinyInteger('isActive')->default(1);
             $table->rememberToken();
             $table->timestamps();
