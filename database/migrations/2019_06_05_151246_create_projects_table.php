@@ -18,8 +18,8 @@ class CreateProjectsTable extends Migration
             $table->char('title');
             $table->integer('totalPrice');
             $table->char('clientName');
-            $table->unsignedBigInteger('projectAdmin');
-            $table->unsignedBigInteger('marketer');
+            $table->unsignedBigInteger('projectAdminId');
+            $table->unsignedBigInteger('marketerId');
             $table->string('descriptions')->nullable();
             $table->date('starting_at')->nullable();
             $table->date('ending_at')->nullable();
@@ -27,10 +27,10 @@ class CreateProjectsTable extends Migration
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
 
-            $table->foreign('projectAdmin')
+            $table->foreign('projectAdminId')
             ->references('id')->on('users');
 
-            $table->foreign('marketer')
+            $table->foreign('marketerId')
             ->references('id')->on('users');
         });
     }
