@@ -16,12 +16,22 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->char('title');
-            $table->char('descriptions');
             $table->integer('totalPrice');
             $table->char('clientName');
-            $table->char('starting_at', 10)->nullable();
-            $table->char('ending_at', 10)->nullable();
+            $table->unsignedBigInteger('projectAdmin');
+            $table->unsignedBigInteger('marketer');
+            $table->string('descriptions')->nullable();
+            $table->date('starting_at')->nullable();
+            $table->date('ending_at')->nullable();
+            $table->date('ended_at')->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
+
+            $table->foreign('projectAdmin')
+            ->references('id')->on('users');
+
+            $table->foreign('marketer')
+            ->references('id')->on('users');
         });
     }
 

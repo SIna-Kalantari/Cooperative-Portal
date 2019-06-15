@@ -30,6 +30,11 @@ class CreateUsersTable extends Migration
             ->references('id')->on('roles')
             ->onDelete('cascade')
             ->onUpdate('cascade');
+
+            $table->foreign('expertId')
+            ->references('id')->on('experts')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 
