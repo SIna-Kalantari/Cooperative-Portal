@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="p-20">
-                            <form class="form-horizontal" method="post" action="{{url('projects')}}" enctype="multipart/form-data">
+                            <form class="form-horizontal form-submit" method="post" action="{{url('projects')}}" enctype="multipart/form-data">
                                 @csrf
                                 @if ($errors->first())
                                     <div style="display: flex; align-items: center; justify-content: center;" class="form-group">
@@ -52,7 +52,7 @@
                                 <div class="form-group col-lg-6">
                                     <label class="col-lg-3 control-label" for="totalPrice">مبلغ کل پروژه</label>
                                     <div class="col-lg-9">
-                                        <input style="text-align: left; direction:ltr"  onkeydown="this.value = formatNumber(this.value.replace(/,/g, ''))" value="{{old('totalPrice')}}" name="totalPrice" type="text" autocomplete="off" id="totalPrice" class="form-control">
+                                        <input style="text-align: left; direction:ltr"  onkeyup="this.value = formatNumber(this.value.replace(/,/g, ''))" value="{{old('totalPrice')}}" name="totalPrice" type="text" autocomplete="off" id="totalPrice" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6">
@@ -77,7 +77,7 @@
                                         <select name="projectAdminId" id="projectAdminId" class="select2" data-placeholder="انتخاب کنید ...">
                                             <option>انتخاب نشده</option>
                                             @foreach($users as $user)
-                                                <option value="{{$user->id}}">{{$user->name.' '.$user->family}}</option>
+                                                <option @if(old('projectAdminId') == $user->id) selected @endif value="{{$user->id}}">{{$user->name.' '.$user->family}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -88,7 +88,7 @@
                                         <select name="marketerId" id="marketerId" class="select2" data-placeholder="انتخاب کنید ...">
                                             <option>انتخاب نشده</option>
                                             @foreach($users as $user)
-                                                <option value="{{$user->id}}">{{$user->name.' '.$user->family}}</option>
+                                                <option @if(old('marketerId') == $user->id) selected @endif value="{{$user->id}}">{{$user->name.' '.$user->family}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -136,5 +136,14 @@
                 format: 'YYYY-MM-DD',
             });
         });
+
+        $('.form-submit').submit( function(event){
+            event.target[2].value = event.target[2].value.replace(/,/g, '');
+            return true;
+        })
+
+        @if($errors->first())
+            $.Notification.notify('error','bottom left', 'خطا', "{{$errors->first()}}");
+        @endif
     </script>
 @endsection('links')
