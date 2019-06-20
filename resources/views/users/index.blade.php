@@ -47,7 +47,7 @@
                                         <th>شماره همراه</th>
                                         <th>نقش</th>
                                         <th>تخصص</th>
-                                        <th>آخرین ورود</th>
+                                        <th>آخرین فعالیت</th>
                                         <th>وضعیت</th>
                                         <th>عملیات</th>
                                     </tr>
@@ -61,7 +61,7 @@
                                             <td>{{$user->phone}}</td>
                                             <td>{{$user->role->title}}</td>
                                             <td>@if($user->expert){{$user->expert->title}}@elseتعریف نشده@endif</td>
-                                            <td>@if($user->lastLogin){{$user->lastLogin}}@elseثبت نام جدید@endif</td>
+                                            <td>@if($user->lastActivity){{jdate('l, n F Y | H:i:s', $user->lastActivity)}}@elseثبت نام جدید@endif</td>
                                             <td>
                                                 @if($user->isActive)
                                                     <span class="label label-table label-success">فعال</span>
@@ -69,13 +69,14 @@
                                                     <span class="label label-table label-danger">مسدود شده</span>
                                                 @endif
                                             </td>
-                                            <td style="min-width: 71px;">
+                                            <td style="min-width: 100px;">
                                                 @if($user->isActive)
-                                                    <span onclick="changeUserStatus(this)" data-id="{{$user->id}}" class="label label-table label-danger"><i class="md md-remove-circle"></i></span>
+                                                    <span onclick="changeUserStatus(this)" data-id="{{$user->id}}" class="label label-table label-warning"><i class="md md-remove-circle"></i></span>
                                                 @else
                                                     <span onclick="changeUserStatus(this)" data-id="{{$user->id}}" class="label label-table label-success"><i class="md md-check"></i></span>
                                                 @endif
                                                 <span onclick="redirectToEditUser(this)" data-id="{{$user->id}}" class="label label-table label-primary"><i class="md md-edit"></i></span>
+                                                <span onclick="redirectToDeleteUser(this)" data-id="{{$user->id}}" class="label label-table label-danger"><i class="md md-delete"></i></span>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -100,11 +101,14 @@
     <script src="{{asset('')}}plugins/notifications/notify-metro.js"></script>
 
     <script>
+        function redirectToDeleteUser(event){
+
+        }
         function redirectToEditUser(event){
-            window.location.href = "{{url('users/edit').'/'}}"+$(event).attr('data-id');
+            window.location.href = "{{url('users').'/'}}"+$(event).attr('data-id')+"/edit";
         }
         function changeUserStatus(event){
-            window.location.href = "{{url('users/changeStatus').'/'}}"+$(event).attr('data-id');
+            window.location.href = "{{url('users').'/'}}"+$(event).attr('data-id')+"/changeStatus";
         }
         @if(session('success'))
             $.Notification.notify('success','bottom left', 'عملیات موفق', "{{session()->get('success')}}");

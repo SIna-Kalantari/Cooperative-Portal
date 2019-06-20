@@ -20,7 +20,7 @@ class CreateProjectsTable extends Migration
             $table->char('clientName');
             $table->unsignedBigInteger('projectAdminId');
             $table->unsignedBigInteger('marketerId');
-            $table->string('descriptions')->nullable();
+            $table->text('descriptions')->nullable();
             $table->date('starting_at')->nullable();
             $table->date('ending_at')->nullable();
             $table->date('ended_at')->nullable();

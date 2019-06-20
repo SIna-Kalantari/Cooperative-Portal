@@ -41,13 +41,13 @@
                         @csrf
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input name="phone" autofocus class="form-control" type="text" required="" placeholder="نام کاربریت">
+                                <input style="text-align:center" name="phone" autofocus class="form-control" type="text" required="" placeholder="نام کاربریت">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input name="password" class="form-control" type="password" required="" placeholder="و اینجا هم رمز عبورت">
+                                <input style="text-align:center" name="password" class="form-control" type="password" required="" placeholder="و اینجا هم رمز عبورت">
                             </div>
                         </div>
 

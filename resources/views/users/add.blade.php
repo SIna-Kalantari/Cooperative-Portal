@@ -1,15 +1,5 @@
 @extends('layouts.app')
 
-@section('links')
-        <link href="{{asset('/')}}/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />
-        <link href="{{asset('/')}}/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{asset('/')}}/plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" />
-        <link href="{{asset('/')}}/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{asset('/')}}/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{asset('/')}}/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css" />
-
-@endsection('links')
-
 @section('content')
     <div class="row">
         <div class="col-sm-12">
@@ -21,9 +11,8 @@
                             <form class="form-horizontal" method="post" action="{{url('users')}}" enctype="multipart/form-data">
                                 @csrf
                                 @if ($errors->first())
-                                    <div class="form-group">
-                                        <label class="col-lg-4 control-label" for="title"></label>
-                                        <div style="text-align: center" class="alert alert-danger col-lg-8" role="alert">
+                                    <div style="display: flex; align-items: center; justify-content: center;" class="form-group">
+                                        <div style="text-align: center" class="alert alert-danger col-lg-10 col-sm-10" role="alert">
                                             <strong>{{ $errors->first() }}</strong>
                                         </div>
                                     </div>
@@ -67,6 +56,14 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div style="display: none" class="form-group">
+                                    <label class="col-lg-4 control-label" for="isActive">وضعیت</label>
+                                    <div class="col-lg-8">
+                                        <select class="form-control" data-style="btn-white" name="isActive" id="isActive">
+                                                <option value="1">فعال</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label"></label>
                                     <div class="col-lg-8">
@@ -81,24 +78,3 @@
         </div>
     </div>
 @endsection
-
-@section('scripts')
-
-        <script src="{{asset('/')}}/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
-        <script src="{{asset('/')}}/plugins/switchery/js/switchery.min.js"></script>
-        <script type="text/javascript" src="{{asset('/')}}/plugins/multiselect/js/jquery.multi-select.js"></script>
-        <script type="text/javascript" src="{{asset('/')}}/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
-        <script src="{{asset('/')}}/plugins/select2/js/select2.min.js" type="text/javascript"></script>
-        <script src="{{asset('/')}}/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
-        <script src="{{asset('/')}}/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>
-        <script src="{{asset('/')}}/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
-        <script src="{{asset('/')}}/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
-
-        <script type="text/javascript" src="{{asset('/')}}/plugins/autocomplete/jquery.mockjax.js"></script>
-        <script type="text/javascript" src="{{asset('/')}}/plugins/autocomplete/jquery.autocomplete.min.js"></script>
-        <script type="text/javascript" src="{{asset('/')}}/plugins/autocomplete/countries.js"></script>
-        <script type="text/javascript" src="{{asset('/')}}/pages/autocomplete.js"></script>
-
-        <script type="text/javascript" src="{{asset('/')}}/pages/jquery.form-advanced.init.js"></script>
-
-@endsection('links')

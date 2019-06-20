@@ -18,7 +18,7 @@ class CreateUserProjectsTable extends Migration
             $table->unsignedBigInteger('userId');
             $table->unsignedBigInteger('projectId');
             $table->char('workCost');
-            $table->timestamps();
+            $table->char('created_at', 10);
 
             $table->foreign('userId')
             ->references('id')->on('users')

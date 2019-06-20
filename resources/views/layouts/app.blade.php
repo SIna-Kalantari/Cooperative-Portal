@@ -8,10 +8,14 @@
         <!-- App Favicon icon -->
         <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}">
         <!-- App Title -->
-        <title>الماس شمال</title>
-
-        @yield('links')
-
+        <title>@yield('title')الماس شمال</title>
+        <link href="{{asset('/')}}plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />
+        <link href="{{asset('/')}}plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{asset('/')}}plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{asset('/')}}plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{asset('/')}}plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" />
+        <link href="{{asset('/')}}plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        
         <link href="{{asset('css/bootstrap-rtl.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('css/core.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('css/components.css')}}" rel="stylesheet" type="text/css" />
@@ -19,12 +23,20 @@
         <link href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('css/menu.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('css/responsive.css')}}" rel="stylesheet" type="text/css" />
+       
+        <!-- Datepicker -->
+        <link href="{{asset('/')}}css/persian-datepicker.min.css" rel="stylesheet" type="text/css" />
+        <!-- SweetAlert -->
+        <link href="{{asset('/')}}plugins/bootstrap-sweetalert/sweet-alert.css" rel="stylesheet" type="text/css">
+
+
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
+        @yield('links')
 
         <script src="{{asset('js/modernizr.min.js')}}"></script>
 
@@ -117,56 +129,11 @@
                                     <li><a href="{{url('users/add')}}">افزودن</a></li>
                                 </ul>
                             </li>
-
-
                             <li class="has-submenu">
-                                <a href="#"><i class="md md-layers"></i>Components</a>
-                                <ul class="submenu megamenu">
-                                    <li>
-                                        <ul>
-                                            <li>
-                                                <span>Elements</span>
-                                            </li>
-                                            <li><a href="components-grid.html">Grid</a></li>
-                                            <li><a href="components-widgets.html">Widgets</a></li>
-                                            <li><a href="components-nestable-list.html">Nesteble</a></li>
-                                            <li><a href="components-range-sliders.html">Range sliders</a></li>
-                                            <li><a href="components-masonry.html">Masonry</a></li>
-                                            <li><a href="components-animation.html">Animation</a></li>
-                                            <li><a href="components-sweet-alert.html">Sweet Alerts</a></li>
-                                            <li><a href="components-treeview.html">Tree view</a></li>
-                                            <li><a href="components-tour.html">Tour</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul>
-                                            <li>
-                                                <span>Forms</span>
-                                            </li>
-                                            <li><a href="form-elements.html">General Elements</a></li>
-                                            <li><a href="form-advanced.html">Advanced Form</a></li>
-                                            <li><a href="form-validation.html">Form Validation</a></li>
-                                            <li><a href="form-pickers.html">Form Pickers</a></li>
-                                            <li><a href="form-wizard.html">Form Wizard</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li>
-                                        <ul>
-                                            <li>
-                                                <span>Forms</span>
-                                            </li>
-                                            <li><a href="form-mask.html">Form Masks</a></li>
-                                            <li><a href="form-summernote.html">Summernote</a></li>
-                                            <li><a href="form-wysiwig.html">Wysiwig Editors</a></li>
-                                            <li><a href="form-code-editor.html">Code Editor</a></li>
-                                            <li><a href="form-uploads.html">Multiple File Upload</a></li>
-                                            <li><a href="form-xeditable.html">X-editable</a></li>
-                                            <li><a href="form-image-crop.html">Image Crop</a></li>
-                                        </ul>
-                                    </li>
-
-
+                                <a href="#"><i class="md md-layers"></i>پروژه ها</a>
+                                <ul class="submenu">
+                                    <li><a href="{{url('projects')}}">مشاهده</a></li>
+                                    <li><a href="{{url('projects/add')}}">افزودن</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
@@ -370,7 +337,38 @@
         <!-- App core js -->
         <script src="{{asset('js/jquery.core.js')}}"></script>
         <script src="{{asset('js/jquery.app.js')}}"></script>
+        <!-- Sweet-Alert  -->
+        <script src="{{asset('/')}}plugins/bootstrap-sweetalert/sweet-alert.min.js"></script>
+        <!-- <script src="{{asset('/')}}pages/jquery.sweet-alert.init.js"></script> -->
+        <!-- Notification js -->
+        <script src="{{asset('/')}}plugins/notifyjs/js/notify.js"></script>
+        <script src="{{asset('/')}}plugins/notifications/notify-metro.js"></script>
+        <!-- Datepicker js -->
+        <script type="text/javascript" src="{{asset('/')}}js/persian-date.min.js"></script>
+        <script type="text/javascript" src="{{asset('/')}}js/persian-datepicker.min.js"></script>
+
+        <script src="{{asset('/')}}plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+        <script src="{{asset('/')}}plugins/switchery/js/switchery.min.js"></script>
+        <script type="text/javascript" src="{{asset('/')}}plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
+        <script type="text/javascript" src="{{asset('/')}}plugins/multiselect/js/jquery.multi-select.js"></script>
+        <script src="{{asset('/')}}plugins/select2/js/select2.min.js" type="text/javascript"></script>
+        <script src="{{asset('/')}}plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+        <script src="{{asset('/')}}plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>
+        <script src="{{asset('/')}}plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+        <script src="{{asset('/')}}plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript" src="{{asset('/')}}plugins/autocomplete/jquery.mockjax.js"></script>
+        <script type="text/javascript" src="{{asset('/')}}plugins/autocomplete/jquery.autocomplete.min.js"></script>
+        <script type="text/javascript" src="{{asset('/')}}plugins/autocomplete/countries.js"></script>
+        <script type="text/javascript" src="{{asset('/')}}pages/autocomplete.js"></script>
+        
+        <script type="text/javascript" src="{{asset('/')}}pages/jquery.form-advanced.init.js"></script>
         @yield('scripts')
+        <script>
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+        }
+        </script>
 
     </body>
 </html>

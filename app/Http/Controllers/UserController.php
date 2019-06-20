@@ -18,16 +18,7 @@ class UserController extends Controller
         return view('users.add', compact('roles', 'experts'));
     }
 
-    public function insert(Request $request){
-        $this->validate($request, [
-            'name' => 'required',
-            'family' => 'required',
-            'phone' => 'required|digits:10|starts_with:9|unique:users',
-            'isActive' => 'required|boolean',
-            'roleId' => 'required|exists:roles,id',
-            'expertId' => 'nullable|exists:experts,id',
-        ], [], ['phone' => 'شماره همراه']);
-
+    public function insert(\App\Http\Requests\UserInsertRequest $request){
         $user = new User($request->except(['_token']));
         $password = rand(111111,999999);
         $user->password = \Hash::make($password);
