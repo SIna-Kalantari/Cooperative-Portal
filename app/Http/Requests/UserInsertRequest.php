@@ -23,7 +23,7 @@ class UserInsertRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'name' => 'required',
             'family' => 'required',
             'phone' => 'required|digits:10|starts_with:9|unique:users',
@@ -31,6 +31,16 @@ class UserInsertRequest extends FormRequest
             'roleId' => 'required|exists:roles,id',
             'expertId' => 'nullable|exists:experts,id',
         ];
+
+        if ($this->getMethod() == 'PUT') {
+            $rules['phone'] = [
+                    'required',
+                    'digits:10',
+                    'starts_with:9',
+                    \Illuminate\Validation\Rule::unique('users')->ignore($this->id)
+            ];
+        }
+        return $rules;
     }
 
     public function attributes()
