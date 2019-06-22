@@ -76,7 +76,7 @@
                                                     <span onclick="changeUserStatus(this)" data-id="{{$user->id}}" class="label label-table label-success"><i class="md md-check"></i></span>
                                                 @endif
                                                 <span onclick="redirectToEditUser(this)" data-id="{{$user->id}}" class="label label-table label-primary"><i class="md md-edit"></i></span>
-                                                <span onclick="redirectToDeleteUser(this)" data-id="{{$user->id}}" class="label label-table label-danger"><i class="md md-delete"></i></span>
+                                                <form style="display:none" id="delForm{{$user->id}}" action="{{url('users/'.$user->id)}}" method="POST"> @csrf {{method_field('DELETE')}} </form> <span onclick="deleteUserSubmit(<?=$user->id?>)" data-id="{{$user->id}}" class="label label-table label-danger"><i class="md md-delete"></i></span>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -101,8 +101,20 @@
     <script src="{{asset('')}}plugins/notifications/notify-metro.js"></script>
 
     <script>
-        function redirectToDeleteUser(event){
+        function deleteUserSubmit(userId){
+            swal({
+                title: "آیا برای حذف این کاربر اطمینان دارین ؟",
+                text: "تمامی فرایند های مرتبط با این کاربر هم حذف خواهند شد و بعد از حذف اطلاعات قابل بازیابی نیستند.",
+                type: "error",
+                showCancelButton: true,
+                cancelButtonClass: 'btn-white btn-md waves-effect',
+                confirmButtonClass: 'btn-danger btn-md waves-effect waves-light del-user',
+                confirmButtonText: 'اطمینان دارم!'
+            });
 
+            $('.del-user').click(function(e){
+                $('#delForm'+userId).submit();
+            });
         }
         function redirectToEditUser(event){
             window.location.href = "{{url('users').'/'}}"+$(event).attr('data-id')+"/edit";

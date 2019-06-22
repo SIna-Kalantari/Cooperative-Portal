@@ -29,6 +29,8 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::post('/', 'UserController@insert');
         Route::get('{id}/edit', 'UserController@showEditUserForm');
         Route::put('{id}/update', 'UserController@update');
+      
+        Route::delete('{id}', 'UserController@delete');
         Route::match(['GET', 'POST'],'{id}/changeStatus', 'UserController@changeStatus');
     });
 
