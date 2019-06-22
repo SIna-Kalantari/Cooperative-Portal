@@ -35,20 +35,20 @@ class UserController extends Controller
         return view('users.edit', compact('roles', 'experts', 'user'));
     }
 
-    public function update(Request $request){
-        $this->validate($request, [
-            'name' => 'required',
-            'family' => 'required',
-            'phone' => [
-                'required',
-                'digits:10',
-                'starts_with:9',
-                \Illuminate\Validation\Rule::unique('users')->ignore($request->id)
-            ],
-            'isActive' => 'required|boolean',
-            'roleId' => 'required|exists:roles,id',
-            'expertId' => 'nullable|exists:experts,id',
-        ], [], ['phone' => 'شماره همراه']);
+    public function update(\App\Http\Requests\UserInsertRequest $request){
+        // $this->validate($request, [
+        //     'name' => 'required',
+        //     'family' => 'required',
+        //     'phone' => [
+        //         'required',
+        //         'digits:10',
+        //         'starts_with:9',
+        //         \Illuminate\Validation\Rule::unique('users')->ignore($request->id)
+        //     ],
+        //     'isActive' => 'required|boolean',
+        //     'roleId' => 'required|exists:roles,id',
+        //     'expertId' => 'nullable|exists:experts,id',
+        // ], [], ['phone' => 'شماره همراه']);
 
         $user = User::find($request->id);
         $user->update($request->except(['_token']));

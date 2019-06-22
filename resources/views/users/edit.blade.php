@@ -8,7 +8,8 @@
                 <div class="row">
                     <div class="col-lg-9">
                         <div class="p-20">
-                            <form class="form-horizontal" method="post" action="<?=url("users/$user->id/update")?>" enctype="multipart/form-data">
+                            <form class="form-horizontal" method="POST" action="<?=url("users/$user->id/update")?>" enctype="multipart/form-data">
+                                {{method_field('PUT')}}
                                 @csrf
                                 @if ($errors->first())
                                     <div class="form-group">
