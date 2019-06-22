@@ -47,4 +47,13 @@ class UserController extends Controller
         return redirect('users')->with('success', "وضعیت حساب کاربری $user->name $user->family با موفقیت تغییر یافت.");
     }
 
+    public function delete(Request $request){
+        $user = User::find($request->id);
+        if(!$user){
+            return redirect()->back()->with('fail', 'شناسه کاربر مورد نظر یافت نشد.');
+        }
+        $user->delete();
+        return redirect()->back()->with('success', "کاربر مورد نظر با موفقیت حذف گردید.");
+    }
+
 }
