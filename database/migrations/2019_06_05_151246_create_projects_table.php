@@ -28,10 +28,14 @@ class CreateProjectsTable extends Migration
             $table->timestamps();
 
             $table->foreign('projectAdminId')
-            ->references('id')->on('users');
+            ->references('id')->on('users')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
 
             $table->foreign('marketerId')
-            ->references('id')->on('users');
+            ->references('id')->on('users')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 
