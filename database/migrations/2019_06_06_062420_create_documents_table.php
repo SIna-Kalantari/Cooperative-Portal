@@ -17,6 +17,7 @@ class CreateDocumentsTable extends Migration
             $table->bigIncrements('id');
             $table->char('title');
             $table->char('type');
+            $table->string('destination');
             $table->unsignedBigInteger('projectId');
             $table->char('created_at', 10);
 
