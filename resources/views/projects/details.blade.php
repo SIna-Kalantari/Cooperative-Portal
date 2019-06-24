@@ -221,6 +221,74 @@
         </div>
     </div>
 </div>
+
+<div class="row"> <!-- فایل‌ها -->
+    <div class="col-lg-12">
+        <div class="portlet">
+            <div class="portlet-heading bg-inverse">
+                <h3 class="portlet-title">فایل‌های پروژه</h3>
+                <div class="portlet-widgets">
+                    <span class="divider"></span>
+                    <a data-toggle="collapse" data-parent="#accordion1" href="#projectUsers"><i class="ion-minus-round"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="projectUsers" class="panel-collapse collapse in">
+                <div class="portlet-body" style="display: flow-root; padding-top: 30px">
+                <div class="col-lg-12">
+                    <div class="p-20">
+                        <table class="table m-0" style="border-bottom: solid 2px #ebeff2;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>نام فایل</th>
+                                    <th>نوع فایل</th>
+                                    <th>نام پروژه</th>
+                                    <th>عملیات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            
+                                @foreach($project->document as $key => $rel)
+                                    <tr>
+                                        <td>{{++$key}}</div>
+                                        <td>{{$rel->title}}</td>
+                                        <td>{{$rel->type}}</td>
+                                        <td>{{$rel->project->title}}</td>
+                                        <td style="min-width: 71px;">
+                                            <button data-id="{{$rel->project->id}}" onclick="redirectToDeleteFile(this)" class="btn btn-danger waves-effect waves-light btn-sm" id="danger-alert"><i class="md md-delete"></i></button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>    
+                <div class="col-lg-12" style="margin-top: 30px;">
+                        <form class="form-horizontal form-submit" method="post" action="<?= url("projects/$project->id/documents")?>" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group col-lg-6">
+                                <label class="col-lg-3 control-label" for="title">نام فایل</label>
+                                <div class="col-lg-9">
+                                    <input value="" name="title" type="text" autocomplete="off" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label class="col-lg-3 control-label" for="destination">انتخاب فایل</label>
+                                <div class="col-lg-9">
+                                    <input type="file" style="text-align: left" name="destination" autocomplete="off" id="destination" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12" style="display: flex; align-items: center; justify-content: center;">
+                                <button style="width: 100px" type="submit" class="btn btn-block btn-md btn-success waves-effect waves-light">افزودن</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('scripts')
@@ -276,6 +344,22 @@
 
             $('.del-user').click(function(e){
                 window.location.href ="{{url('projects/'.$project->id.'/users')}}"+'/'+event.getAttribute('data-id')+'/del';
+            });
+        }
+
+        function redirectToDeleteFile(event){
+            swal({
+                title: "آیا برای حذف این فایل اطمینان دارین ؟",
+                text: "بعد از حذف اطلاعات قابل بازیابی نیستند.",
+                type: "error",
+                showCancelButton: true,
+                cancelButtonClass: 'btn-white btn-md waves-effect',
+                confirmButtonClass: 'btn-danger btn-md waves-effect waves-light del-file',
+                confirmButtonText: 'اطمینان دارم!'
+            });
+
+            $('.del-file').click(function(e){
+                window.location.href ="{{url('projects/'.$project->id.'/documents')}}"+'/'+event.getAttribute('data-id')+'/del';
             });
         }
 
