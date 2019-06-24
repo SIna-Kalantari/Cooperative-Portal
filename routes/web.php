@@ -42,6 +42,8 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::match(['GET', 'POST'],'{id}/changeStatus', 'ProjectController@changeStatus');
         Route::post('{id}/users', 'ProjectController@addUser');
         Route::match(['GET', 'POST'],'{id}/users/{userId}/del', 'ProjectController@delUser');
+        Route::post('{id}/documents', 'ProjectController@addFile');
+        Route::match(['GET', 'POST'], '{id}/documents/{projectId}/del', 'ProjectController@delFile');
     });
 });
 
