@@ -30,8 +30,8 @@ class ProjectRequest extends FormRequest
             'experts.*' => 'required|exists:experts,id',
             'projectAdminId' => 'required|exists:users,id',
             'marketerId' => 'required|exists:users,id',
-            'starting_at' => 'nullable|date',
-            'ending_at' => 'nullable|date',
+            // 'starting_at' => 'nullable|date|date_format:Y-m-d',
+            // 'ending_at' => 'nullable|date|date_format:Y-m-d',
             'descriptions' => 'nullable|max:255',
         ];
     }
@@ -54,7 +54,6 @@ class ProjectRequest extends FormRequest
     {
         $this->dateConvert();
         $this->priceConvert();
-        
         return parent::getValidatorInstance();
     }
 
