@@ -41,4 +41,8 @@ class Project extends Model
     public function marketer(){
         return $this->belongsTo('App\User', 'marketerId');
     }
+
+    public function document(){
+        return $this->hasMany('App\Document', 'projectId');
+    }
 }
