@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Project;
+use Storage;
 class ProjectController extends Controller
 {
     public function index(){
@@ -78,12 +79,10 @@ class ProjectController extends Controller
         ], [], ['workCost' => 'ارزش ریالی کار متخصص', 'userId' => 'متخصص']);
         $project = Project::find($request->id);
         if($project){
-            \App\UserProject::create([
-                'projectId' => $project->id,
-                'userId' => $request->userId,
-                'workCost' => $request->workCost,
-                'created_at' => time()
-            ]);
+            $user = \App\UserProject::firstOrNew(['projectId' => $project->id, 'userId' => $request->userId]);
+            $user->workCost = $request->workCost;
+            $user->created_at = time();
+            $user->save();
         }
         return redirect()->back()->with('success', "متخصص جدید به پروژه افزوده شد.");
     }
@@ -98,5 +97,46 @@ class ProjectController extends Controller
         }
         $userProject->delete();
         return redirect()->back()->with('success', "متخصص از پروژه مورد نظر حذف گردید.");
+    }
+
+    public function addFile(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|unique:documents',
+            'id' => 'exists:projects,id',
+            'destination' => 'required',
+        ], [], ['title' => 'نام فایل', 'destination' => 'فایل']);
+        
+            $destination = Storage::putFile('public/'. $request->id .'/', $request->file('destination'));
+                if(!file_exists(storage_path('app/'.$destination)))
+                {
+                    return redirect()->back()->with('fail', "فایل آپلود نشده است.");
+                }
+            $extension = $request->destination->getClientOriginalExtension();
+            \App\Document::create([
+                'title' => $request->title,
+                'type' => $extension,
+                'destination' => $destination,
+                'projectId' => $request->id,
+                'created_at' => time(),
+            ]);
+
+        return redirect()->back()->with('success', "فایل جدید به پروژه افزوده شد.");
+    }
+
+    public function delFile(Request $request)
+    {
+        $file = \App\Document::where([
+            'projectId' => $request->id,
+        ])->first();
+        
+        if(!$file){
+            return redirect()->back()->with('fail', 'فایل، با پروژه مورد نظر یافت نشد.');
+        }
+        if(file_exists(storage_path('app/'.$file->destination))){
+            unlink(storage_path('app/'.$file->destination));
+        }
+        $file->delete();
+        return redirect()->back()->with('success', "فایل از پروژه مورد نظر حذف گردید.");
     }
 }
