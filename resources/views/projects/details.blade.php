@@ -243,7 +243,7 @@
                                     <th>#</th>
                                     <th>نام فایل</th>
                                     <th>نوع فایل</th>
-                                    <th>نام پروژه</th>
+                                    <th>حجم فایل</th>
                                     <th>عملیات</th>
                                 </tr>
                             </thead>
@@ -254,7 +254,7 @@
                                         <td>{{++$key}}</div>
                                         <td>{{$rel->title}}</td>
                                         <td>{{$rel->type}}</td>
-                                        <td>{{$rel->project->title}}</td>
+                                        <td>{{$rel->size}} بایت</td>
                                         <td style="min-width: 71px;">
                                             <button data-id="{{$rel->project->id}}" onclick="redirectToDeleteFile(this)" class="btn btn-danger waves-effect waves-light btn-sm" id="danger-alert"><i class="md md-delete"></i></button>
                                         </td>
