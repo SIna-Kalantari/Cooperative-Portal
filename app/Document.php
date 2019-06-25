@@ -11,7 +11,7 @@ class Document extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'title' ,'type', 'destination', 'projectId', 'created_at'
+        'title' ,'type', 'size', 'destination', 'projectId', 'created_at'
     ];
 
     public function project(){
