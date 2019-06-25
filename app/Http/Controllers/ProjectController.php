@@ -113,9 +113,11 @@ class ProjectController extends Controller
                     return redirect()->back()->with('fail', "فایل آپلود نشده است.");
                 }
             $extension = $request->destination->getClientOriginalExtension();
+            $size = Storage::size($destination);
             \App\Document::create([
                 'title' => $request->title,
                 'type' => $extension,
+                'size' => $size,
                 'destination' => $destination,
                 'projectId' => $request->id,
                 'created_at' => time(),
