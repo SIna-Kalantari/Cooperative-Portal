@@ -137,65 +137,10 @@
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#"><i class="md md-class"></i>Other</a>
+                                <a href="#"><i class="md md-class"></i>تکنولوژی ها</a>
                                 <ul class="submenu">
-                                    <li class="has-submenu">
-                                        <a href="#">Tables</a>
-                                        <ul class="submenu">
-                                            <li><a href="tables-basic.html">Basic Tables</a></li>
-                                            <li><a href="tables-datatable.html">Data Table</a></li>
-                                            <li><a href="tables-editable.html">Editable Table</a></li>
-                                            <li><a href="tables-responsive.html">Responsive Table</a></li>
-                                            <li><a href="tables-foo-tables.html">FooTable</a></li>
-                                            <li><a href="tables-bootstrap.html">Bootstrap Tables</a></li>
-                                            <li><a href="tables-tablesaw.html">Tablesaw Tables</a></li>
-                                            <li><a href="tables-jsgrid.html">JsGrid Tables</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-submenu">
-                                        <a href="#">Charts</a>
-                                        <ul class="submenu">
-                                            <li><a href="chart-flot.html">Flot Chart</a></li>
-                                            <li><a href="chart-morris.html">Morris Chart</a></li>
-                                            <li><a href="chart-chartjs.html">Chartjs</a></li>
-                                            <li><a href="chart-peity.html">Peity Charts</a></li>
-                                            <li><a href="chart-chartist.html">Chartist Charts</a></li>
-                                            <li><a href="chart-c3.html">C3 Charts</a></li>
-                                            <li><a href="chart-nvd3.html"> Nvd3 Charts</a></li>
-                                            <li><a href="chart-sparkline.html">Sparkline charts</a></li>
-                                            <li><a href="chart-radial.html">Radial charts</a></li>
-                                            <li><a href="chart-other.html">Other Chart</a></li>
-                                            <li><a href="chart-ricksaw.html">Ricksaw Chart</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-submenu">
-                                        <a href="#">Icons</a>
-                                        <ul class="submenu">
-                                            <li><a href="icons-glyphicons.html">Glyphicons</a></li>
-                                            <li><a href="icons-materialdesign.html">Material Design</a></li>
-                                            <li><a href="icons-ionicons.html">Ion Icons</a></li>
-                                            <li><a href="icons-fontawesome.html">Font awesome</a></li>
-                                            <li><a href="icons-themifyicon.html">Themify Icons</a></li>
-                                            <li><a href="icons-simple-line.html">Simple line Icons</a></li>
-                                            <li><a href="icons-weather.html">Weather Icons</a></li>
-                                            <li><a href="icons-typicons.html">Typicons</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-submenu">
-                                        <a href="#">Maps</a>
-                                        <ul class="submenu">
-                                            <li><a href="map-google.html"> Google Map</a></li>
-                                            <li><a href="map-vector.html"> Vector Map</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-submenu">
-                                        <a href="#">Email</a>
-                                        <ul class="submenu">
-                                            <li><a href="email-inbox.html"> Inbox</a></li>
-                                            <li><a href="email-read.html"> Read Mail</a></li>
-                                            <li><a href="email-compose.html"> Compose Mail</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="{{url('technologies')}}">مشاهده</a></li>
+                                    <li><a href="{{url('technologies/add')}}">افزودن</a></li>
                                 </ul>
                             </li>
 
