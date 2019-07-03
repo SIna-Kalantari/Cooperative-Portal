@@ -45,4 +45,12 @@ class Project extends Model
     public function document(){
         return $this->hasMany('App\Document', 'projectId');
     }
+
+    public function technologies(){
+        return $this->belongsToMany('App\Technology', 'project_technologies', 'projectId', 'technologyId');
+    }
+
+    public function technologiesRelation(){
+        return $this->hasMany('App\ProjectTechnology', 'projectId');
+    }
 }
