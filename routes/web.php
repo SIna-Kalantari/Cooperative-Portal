@@ -45,5 +45,14 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::post('{id}/documents', 'ProjectController@addFile');
         Route::match(['GET', 'POST'], '{id}/documents/{projectId}/del', 'ProjectController@delFile');
     });
+
+    Route::prefix('technologies')->group(function () {
+        Route::get('/', 'TechnologyController@index');
+        Route::get('add', 'TechnologyController@showAddTechnologyForm');
+        Route::post('/', 'TechnologyController@insert');
+        Route::get('{id}/edit', 'TechnologyController@showEditTechnologyForm');
+        Route::post('{id}/update', 'TechnologyController@update');
+        Route::delete('{id}', 'TechnologyController@delete');
+    });
 });
 
