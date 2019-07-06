@@ -17,6 +17,7 @@ class CreateTechnologiesTable extends Migration
             $table->bigIncrements('id');
             $table->char('title');
             $table->string('icon');
+            $table->softDeletes();
         });
     }
 

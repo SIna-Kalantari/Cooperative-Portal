@@ -21,6 +21,7 @@ class CreateDocumentsTable extends Migration
             $table->string('destination');
             $table->unsignedBigInteger('projectId');
             $table->char('created_at', 10);
+            $table->softDeletes();
 
             $table->foreign('projectId')
             ->references('id')->on('projects')

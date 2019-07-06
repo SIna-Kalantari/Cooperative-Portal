@@ -16,6 +16,7 @@ class CreateExpertsTable extends Migration
         Schema::create('experts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->char('title');
+            $table->softDeletes();
         });
     }
 
