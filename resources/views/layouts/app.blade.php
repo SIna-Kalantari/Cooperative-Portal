@@ -145,31 +145,10 @@
                             </li>
 
                             <li class="has-submenu">
-                                <a href="#"><i class="md md-pages"></i>Pages</a>
-                                <ul class="submenu megamenu">
-                                    <li>
-                                        <ul>
-                                            <li><a href="page-starter.html">Starter Page</a></li>
-                                            <li><a href="page-login.html">Login</a></li>
-                                            <li><a href="page-login-v2.html">Login v2</a></li>
-                                            <li><a href="page-register.html">Register</a></li>
-                                            <li><a href="page-register-v2.html">Register v2</a></li>
-                                            <li><a href="page-signup-signin.html">Signin - Signup</a></li>
-                                            <li><a href="page-recoverpw.html">Recover Password</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul>
-                                            <li><a href="page-lock-screen.html">Lock Screen</a></li>
-                                            <li><a href="page-400.html">Error 400</a></li>
-                                            <li><a href="page-403.html">Error 403</a></li>
-                                            <li><a href="page-404.html">Error 404</a></li>
-                                            <li><a href="page-404_alt.html">Error 404-alt</a></li>
-                                            <li><a href="page-500.html">Error 500</a></li>
-                                            <li><a href="page-503.html">Error 503</a></li>
-                                        </ul>
-                                    </li>
-
+                                <a href="#"><i class="md md-pages"></i>تخخصص‌ها</a>
+                                <ul class="submenu">
+                                    <li><a href="{{url('experts')}}">مشاهده</a></li>
+                                    <li><a href="{{url('experts/add')}}">افزودن</a></li>
                                 </ul>
                             </li>
 
