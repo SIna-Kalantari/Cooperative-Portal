@@ -54,5 +54,14 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::post('{id}/update', 'TechnologyController@update');
         Route::delete('{id}', 'TechnologyController@delete');
     });
+
+    Route::prefix('experts')->group(function () {
+        Route::get('/', 'ExpertController@show');
+        Route::get('add', 'ExpertController@showAddExpertForm');
+        Route::post('/', 'ExpertController@add');
+        Route::get('{id}/edit', 'ExpertController@showEditExpertForm');
+        Route::post('{id}/update', 'ExpertController@update');
+        Route::delete('{id}', 'ExpertController@delete');
+    });
 });
 
