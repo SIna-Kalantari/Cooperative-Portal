@@ -16,6 +16,7 @@ class CreateTransactionTypesTable extends Migration
         Schema::create('transaction_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->char('title');
+            $table->softDeletes();
         });
     }
 
