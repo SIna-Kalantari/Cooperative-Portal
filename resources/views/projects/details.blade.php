@@ -55,11 +55,11 @@
                 <h3 class="portlet-title">اطلاعات اولیه</h3>
                 <div class="portlet-widgets">
                     <span class="divider"></span>
-                    <a data-toggle="collapse" data-parent="#accordion1" href="#initialData"><i class="ion-minus-round"></i></a>
+                    <a data-toggle="collapse" data-parent="#accordion1" href="#initialData" class="collapsed" aria-expanded="false"><i class="ion-minus-round"></i></a>
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <div id="initialData" class="panel-collapse collapse in">
+            <div id="initialData" class="panel-collapse collapse" aria-expanded="false">
                 <div class="portlet-body" style="display: flow-root; padding-top: 30px">
                     <div class="col-lg-12">
                         <form class="form-horizontal form-submit" method="post" action="<?= url("projects/$project->id/update")?>" enctype="multipart/form-data">
@@ -154,11 +154,11 @@
                 <h3 class="portlet-title">متخصصین دخیل در پروژه</h3>
                 <div class="portlet-widgets">
                     <span class="divider"></span>
-                    <a data-toggle="collapse" data-parent="#accordion1" href="#projectUsers"><i class="ion-minus-round"></i></a>
+                    <a data-toggle="collapse" data-parent="#accordion1" href="#projectUsers" class="collapsed" aria-expanded="false"><i class="ion-minus-round"></i></a>
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <div id="projectUsers" class="panel-collapse collapse in">
+            <div id="projectUsers" class="panel-collapse collapse" aria-expanded="false">
                 <div class="portlet-body" style="display: flow-root; padding-top: 30px">
                 <div class="col-lg-12">
                     <div class="p-20">
@@ -229,11 +229,11 @@
                 <h3 class="portlet-title">فایل‌های پروژه</h3>
                 <div class="portlet-widgets">
                     <span class="divider"></span>
-                    <a data-toggle="collapse" data-parent="#accordion1" href="#projectUsers"><i class="ion-minus-round"></i></a>
+                    <a data-toggle="collapse" data-parent="#accordion1" href="#documents" class="collapsed" aria-expanded="false"><i class="ion-minus-round"></i></a>
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <div id="projectUsers" class="panel-collapse collapse in">
+            <div id="documents" class="panel-collapse collapse" aria-expanded="false">
                 <div class="portlet-body" style="display: flow-root; padding-top: 30px">
                 <div class="col-lg-12">
                     <div class="p-20">
