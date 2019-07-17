@@ -19,6 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->unsignedBigInteger('typeId');
             $table->bigInteger('amount');
             $table->char('created_at', 10);
+            $table->softDeletes();
 
             $table->foreign('typeId')
             ->references('id')->on('transaction_types')
