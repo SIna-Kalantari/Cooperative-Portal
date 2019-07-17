@@ -18,6 +18,7 @@ class CreateTransactionProjectsTable extends Migration
             $table->unsignedBigInteger('transactionId');
             $table->unsignedBigInteger('projectId');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('transactionId')
             ->references('id')->on('transactions')
