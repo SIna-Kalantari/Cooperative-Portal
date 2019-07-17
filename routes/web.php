@@ -63,5 +63,17 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::post('{id}/update', 'ExpertController@update');
         Route::delete('{id}', 'ExpertController@delete');
     });
+
+    Route::prefix('transactions')->group(function () {
+        Route::get('financialTypes', 'TransactionController@show');
+        Route::post('financialTypes', 'TransactionController@insertFinancialType');
+        Route::delete('type/{id}', 'TransactionController@deleteType');
+        Route::get('/', 'TransactionController@index');
+        Route::get('add', 'TransactionController@showAddTransactionForm');
+        Route::post('/', 'TransactionController@insertTransaction');
+        Route::get('{id}/edit', 'TransactionController@showTransactionDetailForm');
+        Route::post('{id}/update', 'TransactionController@updateTransaction');
+        Route::delete('{id}', 'TransactionController@deleteTransaction');
+    });
 });
 
