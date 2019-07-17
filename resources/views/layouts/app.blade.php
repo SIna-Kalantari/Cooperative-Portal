@@ -39,7 +39,6 @@
         @yield('links')
 
         <script src="{{asset('js/modernizr.min.js')}}"></script>
-
     </head>
     <body>
         <!-- Navigation Bar-->
@@ -154,32 +153,10 @@
 
 
                             <li class="has-submenu">
-                                <a href="#"><i class="md md-folder-special"></i>Extras</a>
-                                <ul class="submenu megamenu">
-                                    <li>
-                                        <ul>
-                                            <li><a href="extra-profile.html">Profile</a></li>
-                                            <li><a href="extra-timeline.html">Timeline</a></li>
-                                            <li><a href="extra-sitemap.html">Site map</a></li>
-                                            <li><a href="extra-invoice.html">Invoice</a></li>
-                                            <li><a href="extra-email-template.html">Email template</a></li>
-                                            <li><a href="extra-maintenance.html">Maintenance</a></li>
-                                            <li><a href="extra-coming-soon.html">Coming-soon</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul>
-                                            <li><a href="extra-faq.html">FAQ</a></li>
-                                            <li><a href="extra-search-result.html">Search result</a></li>
-                                            <li><a href="extra-gallery.html">Gallery</a></li>
-                                            <li><a href="extra-pricing.html">Pricing</a></li>
-                                            <li><a href="apps-calendar.html"> Calendar</a></li>
-                                            <li><a href="apps-contact.html"> Contact</a></li>
-                                            <li><a href="apps-taskboard.html"> Taskboard</a></li>
-                                        </ul>
-                                    </li>
-
-
+                                <a href="#"><i class="md md-folder-special"></i>تراکنش‌ها</a>
+                                <ul class="submenu">
+                                        <li><a href="{{url('transactions')}}">مشاهده</a></li>
+                                        <li><a href="{{url('transactions/add')}}">ثبت تراکنش</a></li>
                                 </ul>
                             </li>
 
@@ -194,14 +171,9 @@
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#"><i class="md md-shopping-cart"></i>eCommerce</a>
+                                <a href="#"><i class="md md-settings"></i>تنظیمات</a>
                                 <ul class="submenu">
-                                    <li><a href="ecommerce-dashboard.html"> Dashboard</a></li>
-                                    <li><a href="ecommerce-products.html"> Products</a></li>
-                                    <li><a href="ecommerce-product-detail.html"> Product Detail</a></li>
-                                    <li><a href="ecommerce-product-edit.html"> Product Edit</a></li>
-                                    <li><a href="ecommerce-orders.html"> Orders</a></li>
-                                    <li><a href="ecommerce-sellers.html"> Sellers</a></li>
+                                    <li><a href="{{url('transactions/financialTypes')}}">انواع امورمالی</a></li>
                                 </ul>
                             </li>
                         </ul>
