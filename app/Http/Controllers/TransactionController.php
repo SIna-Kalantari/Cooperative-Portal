@@ -53,7 +53,8 @@ class TransactionController extends Controller
             'title' => 'required|max:50|unique:transactions,title',
             'typeId.*' => 'required|exists:transactions,id',
             'amount' => 'required',
-            'projectId' =>  'required_if:typeId,13|exists:projects,id'
+            'cost' => 'required',
+            'projectId' =>  Rule::requiredIf('پروژه' == TransactionType::find($request->typeId)->title)
         ], [], ['title' => 'عنوان تراکنش', 'typeId' => 'نوع تراکنش', 'amount' => 'مبلغ']);
 
         $transactionId = Transaction::insertGetId($request->except(['_token', 'created_at', 'projectId']));
@@ -86,7 +87,8 @@ class TransactionController extends Controller
             ],
             'typeId.*' => 'required|exists:transactions,id',
             'amount' => 'required',
-            'projectId' =>  'required_if:typeId,13|exists:projects,id'
+            'cost' => 'required',
+            'projectId' =>  Rule::requiredIf('پروژه' == TransactionType::find($request->typeId)->title)
         ], [], ['title' => 'عنوان تراکنش', 'typeId' => 'نوع تراکنش', 'amount' => 'مبلغ']);
 
         $transaction = Transaction::whereHas('transactionType')->with( 'project')->find($request->id);
@@ -101,9 +103,6 @@ class TransactionController extends Controller
                 ]);
                 $rel->projectId = $request->projectId;
                 $rel->save();
-
-                // $transaction_type->where('projectId', $projectId)->where('transactionId', $transactionId)
-                // ->update(['transactionId' => $trId, 'projectId' => $prId]);
             }
             $transaction->update($request->except(['_token', 'created_at']));
             return redirect('transactions')->with('success', "اطلاعات تراکنش با موفقیت بروزرسانی شد.");
