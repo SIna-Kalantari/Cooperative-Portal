@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->char('title');
             $table->unsignedBigInteger('typeId');
             $table->bigInteger('amount');
+            $table->boolval('cost');
             $table->char('created_at', 10);
             $table->softDeletes();
 
