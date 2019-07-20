@@ -100,6 +100,15 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group col-lg-6">
+                                    <label class="col-lg-3 control-label" for="cost">نوع هزینه</label>
+                                    <label class="col-lg-4 radio-inline">
+                                        <input style="transform: scale(0.40); margin-right:20px; margin-left:30px;	margin-top:-6px; border:none; outline:none;" value="0" {{$transaction->cost == 0 ? 'checked' : ''}} name="cost" type="radio" autocomplete="off" id="cost" class="form-control"><span>برداشت از حساب</span>
+                                    </label>
+                                    <label class="col-lg-4 radio-inline">
+                                        <input style="transform: scale(0.40); margin-right:10px; margin-left:30px; margin-top:-7px; border:none; outline:none;" value="1" {{$transaction->cost == 1 ? 'checked' : ''}} name="cost" type="radio" autocomplete="off" id="cost" class="form-control"><span>واریز به حساب</span>
+                                    </label>
+                                </div>
                             <div class="form-group col-lg-12" style="display: flex; align-items: baseline; justify-content: space-between;">
                                 <button style="width: 100px" type="submit" class="btn btn-block btn-md btn-success waves-effect waves-light">بروزرسانی</button>
                                 <a href="{{url('transactions')}}"><button style="width: 110px" type="button"  class="btn btn-block btn-md btn-danger waves-effect waves-light">لغو </button></a>

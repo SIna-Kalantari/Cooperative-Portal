@@ -76,6 +76,15 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group col-lg-6" style="margin-bottom:20px; margin-top:0;">
+                                    <label class="col-lg-3 control-label" for="cost">نوع هزینه</label>
+                                    <label class="col-lg-4 radio-inline">
+                                        <input style="transform: scale(0.40); margin-right:20px; margin-left:30px;	margin-top:-6px; border:none; outline:none;" value="0" name="cost" type="radio" autocomplete="off" id="cost" class="form-control"><span>برداشت از حساب</span>
+                                    </label>
+                                    <label class="col-lg-4 radio-inline">
+                                        <input style="transform: scale(0.40); margin-right:10px; margin-left:30px; margin-top:-7px; border:none; outline:none;" value="1" name="cost" type="radio" autocomplete="off" id="cost" class="form-control"><span>واریز به حساب</span>
+                                    </label>
+                                </div>
                                 <div class="form-group col-lg-10" id="button1" style="display:none">
                                     <label class="col-lg-6 control-label"></label>
                                     <div class="col-lg-3">
@@ -83,7 +92,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6" id="button2">
-                                    <label class="col-lg-6 control-label"></label>
+                                    <label class="col-lg-10 control-label"></label>
                                     <div class="col-lg-3">
                                         <button type="submit" class="btn btn-block btn-md btn-success waves-effect waves-light">ثبت</button>
                                     </div>
