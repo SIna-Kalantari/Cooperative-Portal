@@ -59,7 +59,11 @@
                                             @if(isset($transaction->transactionType->title))
                                                 {{$transaction->transactionType->title}}
                                             @endif </td>
-                                            <td> {{number_format($transaction->amount)}}</td>
+                                            @if($transaction->cost == 1)
+                                                <td><span style="color:green">{{number_format($transaction->amount)}}  +</span></td>
+                                            @elseif($transaction->cost == 0)
+                                                <td><span style="color:red">{{number_format($transaction->amount)}}  -</span></td>
+                                            @endif    
                                             <td style="min-width: 71px;">
                                                 <span onclick="redirectToEditTransaction(this)" data-id="{{$transaction->id}}" class="btn btn-table btn-info btn-sm"><i class="md md-edit"></i></span>
                                                 <button data-id="{{$transaction->id}}" onclick="redirectToDeleteTransaction({{$transaction->id}})" class="btn btn-danger waves-effect waves-light btn-sm" id="danger-alert"><i class="md md-delete"></i></button>
