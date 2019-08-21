@@ -9,12 +9,6 @@ class UserController extends Controller
 {
     public function index(){
         $users = User::orderByRaw("name ASC, family ASC")->with(['userRole', 'expert'])->get();
-        $user = User::where('id', \Auth::user()->id)->with(['userRole' => function($role){
-            $role->with(['roleAccess' => function($access){
-                $access->with('access');
-            }]);
-        }])->get();
-        dd($user);
         return view('users.index', compact('users'));
     }
 
