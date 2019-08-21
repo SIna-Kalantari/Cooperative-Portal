@@ -21,10 +21,7 @@ class CreateRoleAccessTable extends Migration
 
             $table->foreign('roleId')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->foreign('accessId')
-            ->references('id')->on('accessibilities')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+            $table->foreign('accessId')->references('id')->on('accessibilities')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
