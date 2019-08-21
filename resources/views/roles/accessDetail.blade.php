@@ -24,6 +24,12 @@
                                     <input value="{{$accessibility->title}}" name="title" type="text" autocomplete="off" class="form-control" autofocus>
                                 </div>
                             </div>
+                            <div class="form-group col-lg-6">
+                                    <label class="col-lg-3 control-label" for="englishTitle">نام بخش</label>
+                                    <div class="col-lg-9">
+                                        <input value="{{$accessibility->englishTitle}}" name="englishTitle" type="text" autocomplete="off" class="form-control" autofocus>
+                                    </div>
+                                </div>
                             <div class="form-group col-lg-12" style="display: flex; align-items: baseline; justify-content: space-between;">
                                 <button style="width: 100px" type="submit" class="btn btn-block btn-md btn-success waves-effect waves-light">ویرایش</button>
                                 <a href="{{url('roles/accessibility')}}"><button style="width: 110px" type="button"  class="btn btn-block btn-md btn-danger waves-effect waves-light">لغو </button></a>
