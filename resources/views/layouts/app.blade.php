@@ -174,8 +174,8 @@
                                 <a href="#"><i class="md md-settings"></i>تنظیمات</a>
                                 <ul class="submenu">
                                     <li><a href="{{url('transactions/financialTypes')}}">انواع امورمالی</a></li>
-                                    <li><a href="{{url('roles/role')}}">نقش‌ها</a></li>
-                                    <li><a href="{{url('roles/accessibility')}}">دسترسی‌ها</a></li>
+                                    <li><a href="{{url('roles')}}">نقش‌ها</a></li>
+                                    <li><a href="{{url('access')}}">دسترسی‌ها</a></li>
                                 </ul>
                             </li>
                         </ul>
