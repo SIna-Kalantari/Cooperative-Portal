@@ -87,6 +87,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6">
+                                    <label class="col-lg-3 control-label" for="englishTitle">نام بخش</label>
+                                    <div class="col-lg-9">
+                                        <input value="{{old('englishTitle')}}" name="englishTitle" type="text" autocomplete="off" class="form-control" autofocus>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6">
                                     <label class="col-lg-3 control-label"></label>
                                     <div class="col-lg-12">
                                         <button type="submit" class="btn btn-block btn-md btn-success waves-effect waves-light" style="width: 100px">ثبت</button>

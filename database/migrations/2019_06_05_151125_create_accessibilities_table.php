@@ -16,6 +16,7 @@ class CreateAccessibilitiesTable extends Migration
         Schema::create('accessibilities', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->char('title');
+            $table->char('englishTitle');
         });
     }
 

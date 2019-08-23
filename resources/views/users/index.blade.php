@@ -59,7 +59,7 @@
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->family}}</td>
                                             <td>{{$user->phone}}</td>
-                                            <td>{{$user->role->title}}</td>
+                                            <td>{{$user->userRole->title}}</td>
                                             <td>@if($user->expert){{$user->expert->title}}@else تعریف نشده @endif</td>
                                             <td>@if($user->lastActivity){{jdate('l, n F Y | H:i:s', $user->lastActivity)}}@else ثبت نام جدید @endif</td>
                                             <td>

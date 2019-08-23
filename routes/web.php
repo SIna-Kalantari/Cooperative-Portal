@@ -19,7 +19,7 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::match(['GET', 'POST'], 'logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::middleware(['web', 'auth'])->group(function () {
+Route::middleware(['web', 'auth', 'access'])->group(function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
 
@@ -77,17 +77,21 @@ Route::middleware(['web', 'auth'])->group(function () {
     });
 
     Route::prefix('roles')->group(function () {
-        Route::get('role', 'RoleController@showRole');
-        Route::post('role', 'RoleController@insertRole');
-        Route::get('role/{id}/edit', 'RoleController@editRole');
-        Route::post('role/{id}/update', 'RoleController@updateRole');
-        Route::delete('role/{id}', 'RoleController@deleteRole');
+        Route::get('/', 'RoleController@showRole');
+        Route::post('/', 'RoleController@insertRole');
+        Route::get('{id}/edit', 'RoleController@editRole');
+        Route::post('{id}/update', 'RoleController@updateRole');
+        Route::delete('{id}', 'RoleController@deleteRole');
 
-        Route::get('accessibility','AccessController@showAccess');
-        Route::post('accessibility', 'AccessController@insertAccess');
+    });
+
+    Route::prefix('access')->group(function(){
+        Route::get('/','AccessController@showAccess');
+        Route::post('/', 'AccessController@insertAccess');
         Route::get('{id}/edit', 'AccessController@editAccess');
         Route::post('{id}/update', 'AccessController@updateAccess');
         Route::delete('{id}', 'AccessController@deleteAccess');
-    });
+    });    
+        
 });
 

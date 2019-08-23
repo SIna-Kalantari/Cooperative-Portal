@@ -19,6 +19,6 @@ class Role extends Model
     }
 
     public function roleAccess(){
-        return $this->hasOne('App\RoleAccess', 'roleId');
+        return $this->hasMany('App\RoleAccess', 'roleId');
     }
 }
