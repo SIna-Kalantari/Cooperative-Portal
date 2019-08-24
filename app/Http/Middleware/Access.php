@@ -7,7 +7,7 @@ use App\Accessibility;
 use Closure;
 use Session;
 
-class UserAccess
+class Access
 {
     /**
      * Handle an incoming request.
@@ -28,10 +28,10 @@ class UserAccess
 
         $userRoles = User::where('id', \Auth::user()->id)->with(['userRole' => function($role){
                     $role->with('accessibilities' );
-               }])->first(); // user's roleId with title
+               }])->first();
 
         foreach($userRoles->userRole->accessibilities as $access){
-            if($access->englishTitle == $accessUrl){
+            if($userRoles->userRole->title == 'مدیر سایت' || $access->englishTitle == $accessUrl){
                 return $next($request);
             }
         }
