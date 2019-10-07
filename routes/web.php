@@ -19,7 +19,7 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::match(['GET', 'POST'], 'logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::middleware(['web', 'auth', 'access'])->group(function () {
+Route::middleware(['web', 'auth'])->group(function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
 

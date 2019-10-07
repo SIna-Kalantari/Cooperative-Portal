@@ -18,7 +18,7 @@ class UserController extends Controller
         return view('users.add', compact('roles', 'experts'));
     }
 
-    public function insert(\App\Http\Requests\UserInsertRequest $request){
+    public function insert(\App\Http\Requests\UserRequest $request){
         $user = new User($request->except(['_token']));
         $password = rand(111111,999999);
         $user->password = \Hash::make($password);
